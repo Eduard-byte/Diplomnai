@@ -20,17 +20,17 @@
                 <!--Image-->
                 <Grid Margin="0 20 0 0">
                     <StackPanel ZIndex="2">
-                        <Border CornerRadius="25" Height="300" Width="860">
+                        <Border CornerRadius="25" Height="250" Width="860">
                             <Border.Background>
                                 <ImageBrush ImageSource="TestRoom.png" Stretch="UniformToFill"/>
                             </Border.Background>
                         </Border>
                     </StackPanel>
-                    <StackPanel ZIndex="1" Margin="0 190 0 0">
+                    <StackPanel ZIndex="1" Margin="0 140 0 0">
                         <Border CornerRadius="25" Height="120" Width="800"
                                 Background="#919198"/>
                     </StackPanel>
-                    <StackPanel ZIndex="0" Margin="0 220 0 0">
+                    <StackPanel ZIndex="0" Margin="0 172 0 0">
                         <Border CornerRadius="25" Height="100" Width="700"
                                 Background="#EBEBEC"/>
                     </StackPanel>
@@ -38,32 +38,63 @@
 
                 <!--Data-->
                 <ScrollViewer Grid.Row="1">
-                    <Grid  Margin="30" HorizontalAlignment="Center">
+                    <Grid  Margin="30" Width="800">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
+
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
+                        <!--Name | Status-->
                         <WrapPanel Grid.ColumnSpan="2" VerticalAlignment="Center">
                             <TextBlock x:Name="NameRoom" Foreground="{DynamicResource PrimaryLabelColor}"
                                        FontSize="36" FontWeight="Medium" Text="Двухместный номер"/>
                             <Ellipse Fill="{DynamicResource H6TextColor}" Width="5" Height="5" 
-                                     Margin="50 15 50 0" VerticalAlignment="Center"/>
+                                     Margin="25 15 25 0" VerticalAlignment="Center"/>
                             <TextBlock x:Name="StatusRoom" Text="Занят" VerticalAlignment="Center"
                                        FontSize="18" Margin="0 12 0 0" Foreground="{DynamicResource DeleteTextColor}"/>
                         </WrapPanel>
 
+                        <!--Price-->
+                        <!--Text="{Binding Price, StringFormat={}{0}₽}"-->
+                        <WrapPanel Grid.ColumnSpan="2" Margin="0 20 0 0" HorizontalAlignment="Right">
+                            <TextBlock Name="Price" Text="5500₽"
+                                       Foreground="{DynamicResource PrimaryLabelColor}"
+                                       FontSize="20"/>
+                            <Label Content=" / день" Style="{DynamicResource Text-H6}"
+                                   Margin="-5 0 0 0" FontSize="16"/>
+                        </WrapPanel>
+
+                        <!--Description-->
                         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="0 30 0 0">
                             <Label Content="Описание" Style="{DynamicResource Text-H6}" FontSize="12"
                                    Margin="-5 0 0 0"/>
                             <TextBlock x:Name="DescRoom" Text="Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное."
                                        TextWrapping="Wrap"  FontSize="14" Foreground="{DynamicResource PrimaryLabelColor}"
-                                       Width="600"/>
+                                       Width="600" HorizontalAlignment="Left"/>
                         </StackPanel>
+
+
+
+                        <WrapPanel Grid.Row="2" Margin="-6 30 0 0">
+                            <Label Content="Дата начала проживания  — " Style="{DynamicResource BlackText-20}"/>
+                            <DatePicker x:Name="StartDate" Style="{DynamicResource DatePickerStyle}"/>
+                        </WrapPanel>
+
+                        <WrapPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Margin="0 30 0 0">
+                            <Label Content="Дата окончания проживания  — " Style="{DynamicResource BlackText-20}"/>
+                            <DatePicker x:Name="EndDate" Style="{DynamicResource DatePickerStyle}"/>
+                        </WrapPanel>
+
+                        <Button Grid.Row="3" Grid.ColumnSpan="2" Margin="0 30"
+                                Content="Забронировать" Style="{DynamicResource PrimaryButtonStyle}"
+                                Width="500"/>
 
                     </Grid>
                 </ScrollViewer>
