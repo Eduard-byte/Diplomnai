@@ -1,0 +1,75 @@
+﻿<Page x:Class="UIKitTutorials.Pages.ReservePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UIKitTutorials.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ReservePage">
+
+    <Grid>
+        <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--Image-->
+                <Grid Margin="0 20 0 0">
+                    <StackPanel ZIndex="2">
+                        <Border CornerRadius="25" Height="300" Width="860">
+                            <Border.Background>
+                                <ImageBrush ImageSource="TestRoom.png" Stretch="UniformToFill"/>
+                            </Border.Background>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel ZIndex="1" Margin="0 190 0 0">
+                        <Border CornerRadius="25" Height="120" Width="800"
+                                Background="#919198"/>
+                    </StackPanel>
+                    <StackPanel ZIndex="0" Margin="0 220 0 0">
+                        <Border CornerRadius="25" Height="100" Width="700"
+                                Background="#EBEBEC"/>
+                    </StackPanel>
+                </Grid>
+
+                <!--Data-->
+                <ScrollViewer Grid.Row="1">
+                    <Grid  Margin="30" HorizontalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <WrapPanel Grid.ColumnSpan="2" VerticalAlignment="Center">
+                            <TextBlock x:Name="NameRoom" Foreground="{DynamicResource PrimaryLabelColor}"
+                                       FontSize="36" FontWeight="Medium" Text="Двухместный номер"/>
+                            <Ellipse Fill="{DynamicResource H6TextColor}" Width="5" Height="5" 
+                                     Margin="50 15 50 0" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="StatusRoom" Text="Занят" VerticalAlignment="Center"
+                                       FontSize="18" Margin="0 12 0 0" Foreground="{DynamicResource DeleteTextColor}"/>
+                        </WrapPanel>
+
+                        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="0 30 0 0">
+                            <Label Content="Описание" Style="{DynamicResource Text-H6}" FontSize="12"
+                                   Margin="-5 0 0 0"/>
+                            <TextBlock x:Name="DescRoom" Text="Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное."
+                                       TextWrapping="Wrap"  FontSize="14" Foreground="{DynamicResource PrimaryLabelColor}"
+                                       Width="600"/>
+                        </StackPanel>
+
+                    </Grid>
+                </ScrollViewer>
+                
+
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
