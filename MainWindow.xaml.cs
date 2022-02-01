@@ -29,10 +29,16 @@ namespace UIKitTutorials
             Manager.MainFrame = PagesNavigation;
 
             Manager.MainFrame.Navigate(new HomePage());
+
+            Manager.ImageUser = ImageUser;
+            Manager.EmailUser = EmailUser;
+            Manager.NameUser = NameUser;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
+            
+
             Close();
         }
 

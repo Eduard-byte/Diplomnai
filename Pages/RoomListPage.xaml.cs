@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using UIKitTutorials.Entities;
+using UIKitTutorials.Helpers;
 
 namespace UIKitTutorials.Pages
 {
@@ -30,7 +31,7 @@ namespace UIKitTutorials.Pages
 
         private void ReserveButton(object sender, RoutedEventArgs e)
         {
-            
+            Manager.MainFrame.Navigate(new ReservePage());
         }
     }
 }

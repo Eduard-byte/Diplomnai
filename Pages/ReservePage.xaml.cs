@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UIKitTutorials.Entities;
 
 namespace UIKitTutorials.Pages
 {
@@ -20,9 +21,16 @@ namespace UIKitTutorials.Pages
     /// </summary>
     public partial class ReservePage : Page
     {
-        public ReservePage()
+        public ReservePage(Room room)
         {
             InitializeComponent();
+
+            if (room is null)
+            {
+                return;
+            }
+
+            DataContext = room;
         }
     }
 }

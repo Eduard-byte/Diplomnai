@@ -10,37 +10,24 @@
 
     <Grid>
         <Border CornerRadius="8" Background="{DynamicResource SecundaryBackgroundColor}">
-            <StackPanel HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
-                <Image Source="LogoMini.png"
-                       Width="60" Height="60"
-                       Stretch="Fill"/>
-                <Label Content="Регистрация" Margin="0,3,0,0"
-                       HorizontalAlignment="Center"
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Source="LogoMini.png" Width="60" Height="60" Stretch="Fill"/>
+                <Label Content="Регистрация" Margin="0,3,0,0" HorizontalAlignment="Center"
                        Style="{StaticResource BlackText-title}"/>
 
                 <Border  Style="{StaticResource Block}">
                     <StackPanel Margin="24 40 24 0">
                         <TextBox x:Name="Name" Style="{DynamicResource TextBoxStyle}" Tag="Имя"/>
-                        <TextBox x:Name="Surname" Style="{DynamicResource TextBoxStyle}" Tag="Фамилия"
-                                 Margin="0 20"/>
+                        <TextBox x:Name="Surname" Style="{DynamicResource TextBoxStyle}" Tag="Фамилия" Margin="0 20"/>
                         <TextBox x:Name="Patronymic" Style="{DynamicResource TextBoxStyle}" Tag="Отчество"/>
 
-                        <TextBox x:Name="Email" Style="{DynamicResource TextBoxStyle}" Tag="Email"
-                                 Margin="0 20"/>
+                        <TextBox x:Name="Email" Style="{DynamicResource TextBoxStyle}" Tag="Email" Margin="0 20"/>
                         <TextBox x:Name="Password" Style="{DynamicResource TextBoxStyle}" Tag="Пароль"/>
 
-                        <Button Content="Зарегистрироваться"
-                                Margin="0 20"
-                                Width="300"
-                                Style="{DynamicResource PrimaryButtonStyle}"
-                                Click="LogIn"/>
+                        <Button Content="Зарегистрироваться" Margin="0 20" Width="300"
+                                Style="{DynamicResource PrimaryButtonStyle}" Click="LogIn"/>
                     </StackPanel>
                 </Border>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
-                            Margin="0,15,0,0">
-                </StackPanel>
             </StackPanel>
         </Border>
     </Grid>
