@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,21 +44,38 @@ namespace UIKitTutorials.Pages
         {
             StringBuilder errors = new StringBuilder();
 
-            if (Authorization.User is null)
+            DateTime start = default;
+            DateTime end = default;
+
+            if (Authorization.User.Email is null)
             {
-                MessageBox.Show("Вы не авторизованы. ");
+                MessageBox.Show("Вы не авторизованы.");
                 return;
             }
 
             if (String.IsNullOrEmpty(StartDate.Text))
-            {
                 errors.AppendLine("Введите дату начала проживания.");
-            }
+            
+            else
+                start = Convert.ToDateTime(StartDate.Text).Date;
+            
 
             if (String.IsNullOrEmpty(EndDate.Text))
-            {
                 errors.AppendLine("Введите дату окончания проживания.");
+            else
+                end = Convert.ToDateTime(EndDate.Text).Date;
+
+            if (start >= end)
+            {
+                errors.AppendLine("Дата начала проживания превышает дату конца проживания.");
             }
+
+            if (start.Date < DateTime.Now.Date 
+                || end.Date < DateTime.Now.Date)
+                errors.AppendLine("Введенные даты некорректны.");
+
+            if (room.Status)
+                errors.AppendLine("Этот номер уже забронирован.");
 
             if (errors.Length > 0)
             {
@@ -75,7 +93,11 @@ namespace UIKitTutorials.Pages
                     EndDate = DateTime.Parse(EndDate.Text),
                     Status = false
                 });
+
+                room.Status = true;
+                HotelContext.GetContext().Entry(room).State = EntityState.Modified;
                 HotelContext.GetContext().SaveChanges();
+
                 MessageBox.Show("Номер забронирован.");
                 Manager.MainFrame.Navigate(new HomePage());
             }
@@ -84,6 +106,15 @@ namespace UIKitTutorials.Pages
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+
+        // Helpers 
+        private string GetError()
+        {
+            
+
+            return "";
         }
     }
 }

@@ -7,6 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+
 namespace UIKitTutorials.Entities
 {
     using System;
@@ -61,10 +64,30 @@ namespace UIKitTutorials.Entities
         {
             get
             {
-                if (Status)
+                bool result = GetActualitiStatus(Id);
+
+                if (result)
                 {
                     return "Свободен";
                 }
+                    
+
+                //int days = GetDaysToAccommodation(Id);
+
+                //if (days >= 7 && days <= 7)
+                //{
+                //    return "Занят";
+                //}
+
+                //if (days <= 0)
+                //{
+                //    return "Свободен";
+                //}
+
+                //if (days > 0 )
+                //{
+                //    return $"Свободен с ограничением до {DateTime.Now.AddDays(days).Date}";
+                //}
 
                 return "Занят";
             }
@@ -87,5 +110,62 @@ namespace UIKitTutorials.Entities
 
             }
         }
+
+
+        // Helpers
+        protected bool GetActualitiStatus(int roomId)
+        {
+            var rooms = HotelContext.GetContext().RegisterRooms.Where(x => x.Id_room == roomId);
+
+            var room = new RegisterRoom();
+
+            if (rooms.Count() == 0)
+                return true;
+
+            foreach (var item in rooms)
+            {
+                if (item.EndDate < DateTime.Now)
+                    continue;
+
+                if (item.EndDate > DateTime.Now && item.EndDate <= DateTime.Now.AddDays(30))
+                {
+                    room = item;
+                }
+            }
+
+            var StartDate = room.StartDate;
+            var EndDate = room.EndDate;
+
+            var date = DateTime.Now.Date;
+
+            while (StartDate <= EndDate)
+            {
+                if (StartDate == date)
+                    return false;
+                
+                StartDate = StartDate.AddDays(1);
+            }
+
+            return false;
+        }
+
+        protected int GetDaysToAccommodation(int roomId)
+        {
+            var room = HotelContext.GetContext().RegisterRooms.FirstOrDefault(r => r.Id_room == roomId);
+
+            if (room is null)
+                return 0;
+            
+
+            var StartDate = room.StartDate;
+            var EndDate = room.EndDate;
+
+            if (room is null)
+                return 0;
+
+            return (EndDate - StartDate).Days;
+        }
+
+
     }
 }
