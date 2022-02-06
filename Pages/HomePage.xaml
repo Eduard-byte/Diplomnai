@@ -9,6 +9,63 @@
       Title="HomePage">
 
     <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
-        <Label Content="Home" Foreground="Black" FontSize="50" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <Grid>
+                <StackPanel>
+                    <Border CornerRadius="5" Height="150">
+                        <Border.Background>
+                            <ImageBrush ImageSource="Background.png" Stretch="UniformToFill"/>
+                        </Border.Background>
+                        <Label Content="Тут какая-то инфа" Style="{DynamicResource Text-H1}"/>
+                    </Border>
+                </StackPanel>
+            </Grid>
+
+
+
+            <!--User-->
+            <Border Grid.Row="1"  CornerRadius="15" Background="{DynamicResource SecundaryGrayColor}"
+                    BorderThickness="1" BorderBrush="{DynamicResource SecundaryLineGrayColor}" 
+                    Width="400" Height="130">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Ellipse Grid.RowSpan="2" Width="70" Height="70" Margin="20 0">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="ImageUser" ImageSource="LogoMini.png"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+
+                    <WrapPanel Grid.Column="1" Grid.ColumnSpan="2" Margin="0 26 0 14">
+                        <Label x:Name="Surname" Content="Кудряввцев" Style="{DynamicResource BlackText-20}"/>
+                        <Label x:Name="Name" Content="Эдуард" Style="{DynamicResource BlackText-20}"/>
+                        <Label x:Name="Patronymic" Content="Витальевич" Style="{DynamicResource BlackText-20}"/>
+                    </WrapPanel>
+                    
+                    <WrapPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                        <Label Content="Email: " Style="{DynamicResource Text-H6}" Margin="0 2 0 0"/>
+                        <Label x:Name="Email" Content="eduard.working@yandex.ru" Style="{DynamicResource LinkText}" Cursor="Arrow"/>
+                    </WrapPanel>
+
+                </Grid>
+            </Border>
+
+        </Grid>
     </Border>
 </Page>

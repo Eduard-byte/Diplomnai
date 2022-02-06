@@ -20,12 +20,11 @@ namespace UIKitTutorials.Entities
         public static HotelContext GetContext()
         {
             if (_context == null)
-            {
                 _context = new HotelContext();
-            }
 
             return _context;
         }
+
 
         public HotelContext() : base("name=HotelContext") { }
     

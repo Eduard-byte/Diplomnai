@@ -76,7 +76,7 @@ namespace UIKitTutorials.Pages
                 MessageBox.Show(ex.Message);
             }
 
-            Manager.ImageUser.ImageSource = new BitmapImage(User.GetPhoto);
+            Manager.ImageUser.ImageSource = new BitmapImage(new Uri(User.GetPhoto));
             Manager.NameUser.Content = User.Surname + " " + User.Name;
             Manager.EmailUser.Content = User.Email;
 

@@ -495,6 +495,12 @@
         <Setter Property="Foreground" Value="{StaticResource ActiveTextColor}"/>
     </Style>
 
+    <Style x:Key="Text-20-blue" TargetType="Label">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Foreground" Value="{StaticResource ActiveTextColor}"/>
+    </Style>
+
     <!--Frame-->
     <Style x:Key="Block" TargetType="Border">
         <Setter Property="CornerRadius" Value="15"/>

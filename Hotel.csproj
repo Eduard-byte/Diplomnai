@@ -203,6 +203,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Pages\Background.png" />
+    <Resource Include="Resources\Background.png" />
     <Resource Include="Pages\TestRoom.png" />
     <Resource Include="Pages\LogoMini.png" />
     <None Include="Resources\TestRoom.png" />

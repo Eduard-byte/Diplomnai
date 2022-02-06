@@ -56,22 +56,6 @@ namespace UIKitTutorials.Pages
             {
                 User = HotelContext.GetContext().Users
                     .FirstOrDefault(user =>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         user.Email == Email.Text && user.Password == Password.Password);
                 if (User == default)
                 {
@@ -92,7 +76,7 @@ namespace UIKitTutorials.Pages
             }
             
 
-            Manager.ImageUser.ImageSource = new BitmapImage(User.GetPhoto);
+            Manager.ImageUser.ImageSource = new BitmapImage(new Uri(User.GetPhoto));
             Manager.NameUser.Content = User.Surname + " " + User.Name;
             Manager.EmailUser.Content = User.Email;
 

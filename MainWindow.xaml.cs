@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UIKitTutorials.Entities;
 using UIKitTutorials.Helpers;
 using UIKitTutorials.Pages;
 
@@ -69,7 +70,7 @@ namespace UIKitTutorials
 
         private void rdPayment_Click(object sender, RoutedEventArgs e)
         {
-            PagesNavigation.Navigate(new ReservePage());
+            PagesNavigation.Navigate(new ReservePage(new Room()));
         }
 
         private void RdAuth_OnClick(object sender, RoutedEventArgs e)

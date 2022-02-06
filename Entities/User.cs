@@ -35,16 +35,17 @@ namespace UIKitTutorials.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegisterRoom> RegisterRooms { get; set; }
 
-        public Uri GetPhoto
+        public string GetPhoto
         {
             get
             {
                 if (Image is null)
-                    return new Uri(Directory.GetCurrentDirectory() + @"\Images\User\UserNull.png");
+                    return Directory.GetCurrentDirectory() + @"\Images\User\UserNull.png";
 
-                return new Uri(Directory.GetCurrentDirectory() + @"\Images\User\" + Image.Trim());
+                return Directory.GetCurrentDirectory() + @"\Images\User\" + Image.Trim();
             }
         }
+
 
     }
 }

@@ -31,7 +31,7 @@ namespace UIKitTutorials.Pages
 
         private void ReserveButton(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new ReservePage());
+            Manager.MainFrame.Navigate(new ReservePage((sender as Button).DataContext as Room));
         }
     }
 }

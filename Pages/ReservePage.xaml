@@ -22,7 +22,7 @@
                     <StackPanel ZIndex="2">
                         <Border CornerRadius="25" Height="250" Width="860">
                             <Border.Background>
-                                <ImageBrush ImageSource="TestRoom.png" Stretch="UniformToFill"/>
+                                <ImageBrush ImageSource="{Binding GetPhoto}" Stretch="UniformToFill"/>
                             </Border.Background>
                         </Border>
                     </StackPanel>
@@ -54,17 +54,16 @@
                         <!--Name | Status-->
                         <WrapPanel Grid.ColumnSpan="2" VerticalAlignment="Center">
                             <TextBlock x:Name="NameRoom" Foreground="{DynamicResource PrimaryLabelColor}"
-                                       FontSize="36" FontWeight="Medium" Text="Двухместный номер"/>
+                                       FontSize="36" FontWeight="Medium" Text="{Binding Name}"/>
                             <Ellipse Fill="{DynamicResource H6TextColor}" Width="5" Height="5" 
                                      Margin="25 15 25 0" VerticalAlignment="Center"/>
-                            <TextBlock x:Name="StatusRoom" Text="Занят" VerticalAlignment="Center"
+                            <TextBlock x:Name="StatusRoom" Text="{Binding GetStatusStr}" VerticalAlignment="Center"
                                        FontSize="18" Margin="0 12 0 0" Foreground="{DynamicResource DeleteTextColor}"/>
                         </WrapPanel>
 
                         <!--Price-->
-                        <!--Text="{Binding Price, StringFormat={}{0}₽}"-->
                         <WrapPanel Grid.ColumnSpan="2" Margin="0 20 0 0" HorizontalAlignment="Right">
-                            <TextBlock Name="Price" Text="5500₽"
+                            <TextBlock Name="Price" Text="{Binding Price, StringFormat={}{0}₽}"
                                        Foreground="{DynamicResource PrimaryLabelColor}"
                                        FontSize="20"/>
                             <Label Content=" / день" Style="{DynamicResource Text-H6}"
@@ -75,13 +74,13 @@
                         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="0 30 0 0">
                             <Label Content="Описание" Style="{DynamicResource Text-H6}" FontSize="12"
                                    Margin="-5 0 0 0"/>
-                            <TextBlock x:Name="DescRoom" Text="Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное."
+                            <TextBlock x:Name="DescRoom" Text="{Binding Description}"
                                        TextWrapping="Wrap"  FontSize="14" Foreground="{DynamicResource PrimaryLabelColor}"
                                        Width="600" HorizontalAlignment="Left"/>
                         </StackPanel>
 
 
-
+                        <!--Date (start, end)-->
                         <WrapPanel Grid.Row="2" Margin="-6 30 0 0">
                             <Label Content="Дата начала проживания  — " Style="{DynamicResource BlackText-20}"/>
                             <DatePicker x:Name="StartDate" Style="{DynamicResource DatePickerStyle}"/>
@@ -92,9 +91,10 @@
                             <DatePicker x:Name="EndDate" Style="{DynamicResource DatePickerStyle}"/>
                         </WrapPanel>
 
-                        <Button Grid.Row="3" Grid.ColumnSpan="2" Margin="0 30"
+
+                        <Button Grid.Row="3" Grid.ColumnSpan="2" Margin="0 30" x:Name="Reserve"
                                 Content="Забронировать" Style="{DynamicResource PrimaryButtonStyle}"
-                                Width="500"/>
+                                Width="500" Click="ReserveUser"/>
 
                     </Grid>
                 </ScrollViewer>
