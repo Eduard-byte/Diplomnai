@@ -27,5 +27,10 @@ namespace UIKitTutorials.Pages
             InitializeComponent();
 
         }
+
+        private void SettingUser(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
     }
 }

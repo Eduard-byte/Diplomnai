@@ -12,11 +12,17 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
 
-            <Grid>
+            <!--Offer-->
+            <Grid Grid.ColumnSpan="2">
                 <StackPanel>
                     <Border CornerRadius="5" Height="150">
                         <Border.Background>
@@ -30,9 +36,9 @@
 
 
             <!--User-->
-            <Border Grid.Row="1"  CornerRadius="15" Background="{DynamicResource SecundaryGrayColor}"
-                    BorderThickness="1" BorderBrush="{DynamicResource SecundaryLineGrayColor}" 
-                    Width="400" Height="130">
+            <Border Grid.Row="1"  CornerRadius="15" Margin="40"
+                    BorderThickness="1" BorderBrush="{DynamicResource H6TextColor}" 
+                    Width="400" Height="180" Background="{DynamicResource PrimaryBackgroundColor}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -45,26 +51,41 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Ellipse Grid.RowSpan="2" Width="70" Height="70" Margin="20 0">
+                    <Ellipse Width="70" Height="70" Margin="26 15 26 0">
                         <Ellipse.Fill>
                             <ImageBrush x:Name="ImageUser" ImageSource="LogoMini.png"/>
                         </Ellipse.Fill>
                     </Ellipse>
 
 
-                    <WrapPanel Grid.Column="1" Grid.ColumnSpan="2" Margin="0 26 0 14">
-                        <Label x:Name="Surname" Content="Кудряввцев" Style="{DynamicResource BlackText-20}"/>
-                        <Label x:Name="Name" Content="Эдуард" Style="{DynamicResource BlackText-20}"/>
-                        <Label x:Name="Patronymic" Content="Витальевич" Style="{DynamicResource BlackText-20}"/>
-                    </WrapPanel>
-                    
-                    <WrapPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
-                        <Label Content="Email: " Style="{DynamicResource Text-H6}" Margin="0 2 0 0"/>
+                    <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Margin="0 26 0 14" VerticalAlignment="Center">
+                        <WrapPanel>
+                            <Label Content="Фамилия:" Style="{DynamicResource Text-H6}" Margin="0 2 0 0"/>
+                            <Label x:Name="Surname" Content="Кудряввцев" Style="{DynamicResource BlackText-20}"/>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <Label Content="Имя:        " Style="{DynamicResource Text-H6}" Margin="0 2 0 0"/>
+                            <Label x:Name="Name" Content="Эдуард" Style="{DynamicResource BlackText-20}"/>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <Label Content="Отчество:" Style="{DynamicResource Text-H6}" Margin="0 2 0 0"/>
+                            <Label x:Name="Patronymic" Content="Витальевич" Style="{DynamicResource BlackText-20}"/>
+                        </WrapPanel>
+                    </StackPanel>
+
+                    <WrapPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="26 0 0 0">
+                        <Label Content="Email: " Style="{DynamicResource Text-H6}" Margin="0 3 0 0"/>
                         <Label x:Name="Email" Content="eduard.working@yandex.ru" Style="{DynamicResource LinkText}" Cursor="Arrow"/>
+                    </WrapPanel>
+
+                    <WrapPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">
+                        <Label x:Name="SetteingUser" Content="Изменить" Style="{DynamicResource LinkText}" MouseDoubleClick="SettingUser"/>
+                        <Image Source="Setting.png" Width="13" Cursor="Hand"/>
                     </WrapPanel>
 
                 </Grid>
             </Border>
+
 
         </Grid>
     </Border>

@@ -32,9 +32,22 @@ namespace UIKitTutorials.Entities
         public string Image { get; set; }
         public string Location { get; set; }
         public Nullable<double> Rating { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegisterRoom> RegisterRooms { get; set; }
+        
+
+        // Временный статус - активный, если есть заказ через месяц.
+        private bool GetTemporaryStatus { get; set; }
+
+        // Актуальный статус.
+        public bool GetActualStatus
+        {
+            get
+            {
+                return GetActualitiStatus(Id);
+            }
+        }
 
         public string GetPhoto
         {
@@ -51,7 +64,7 @@ namespace UIKitTutorials.Entities
         {
             get
             {
-                if (Status)
+                if (GetActualStatus)
                 {
                     return "#42E448";
                 }
@@ -64,30 +77,9 @@ namespace UIKitTutorials.Entities
         {
             get
             {
-                bool result = GetActualitiStatus(Id);
 
-                if (result)
-                {
+                if (GetActualStatus)
                     return "Свободен";
-                }
-                    
-
-                //int days = GetDaysToAccommodation(Id);
-
-                //if (days >= 7 && days <= 7)
-                //{
-                //    return "Занят";
-                //}
-
-                //if (days <= 0)
-                //{
-                //    return "Свободен";
-                //}
-
-                //if (days > 0 )
-                //{
-                //    return $"Свободен с ограничением до {DateTime.Now.AddDays(days).Date}";
-                //}
 
                 return "Занят";
             }
@@ -115,13 +107,16 @@ namespace UIKitTutorials.Entities
         // Helpers
         protected bool GetActualitiStatus(int roomId)
         {
-            var rooms = HotelContext.GetContext().RegisterRooms.Where(x => x.Id_room == roomId);
 
-            var room = new RegisterRoom();
+            // находим все заказы
+            var rooms = HotelContext.GetContext().RegisterRooms.Where(x => x.Id_room == roomId);
 
             if (rooms.Count() == 0)
                 return true;
 
+            var room = new RegisterRoom();
+            
+            // находим актуальный заказ с диапазоном в 30 дней 
             foreach (var item in rooms)
             {
                 if (item.EndDate < DateTime.Now)
@@ -133,6 +128,15 @@ namespace UIKitTutorials.Entities
                 }
             }
 
+            if (room.Id == 0)
+            {
+                GetTemporaryStatus = true;
+                return true;
+            }
+                
+
+
+            // проверка, в данный момент занят номер?
             var StartDate = room.StartDate;
             var EndDate = room.EndDate;
 

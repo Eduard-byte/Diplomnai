@@ -74,7 +74,7 @@ namespace UIKitTutorials.Pages
                 || end.Date < DateTime.Now.Date)
                 errors.AppendLine("Введенные даты некорректны.");
 
-            if (room.Status)
+            if (!room.GetActualStatus)
                 errors.AppendLine("Этот номер уже забронирован.");
 
             if (errors.Length > 0)
