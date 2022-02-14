@@ -31,9 +31,9 @@ namespace UIKitTutorials
 
             Manager.MainFrame.Navigate(new HomePage());
 
-            Manager.ImageUser = ImageUser;
-            Manager.EmailUser = EmailUser;
-            Manager.NameUser = NameUser;
+            Auth.ImageUser = ImageUser;
+            Auth.EmailUser = EmailUser;
+            Auth.NameUser = NameUser;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)

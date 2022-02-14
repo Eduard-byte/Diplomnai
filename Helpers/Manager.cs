@@ -12,9 +12,5 @@ namespace UIKitTutorials.Helpers
     public class Manager
     {
         public static Frame MainFrame { get; set; }
-
-        public static ImageBrush ImageUser { get; set; }
-        public static Label NameUser { get; set; }
-        public static Label EmailUser { get; set; }
     }
 }

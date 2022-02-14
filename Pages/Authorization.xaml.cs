@@ -68,6 +68,7 @@ namespace UIKitTutorials.Pages
                     IsAdmin = true;
                 }
 
+                Auth.User = User;
                 MessageBox.Show($"Здравствуйте! {User.Name}.");
             }
             catch (Exception exception)
@@ -76,11 +77,27 @@ namespace UIKitTutorials.Pages
             }
             
 
-            Manager.ImageUser.ImageSource = new BitmapImage(new Uri(User.GetPhoto));
-            Manager.NameUser.Content = User.Surname + " " + User.Name;
-            Manager.EmailUser.Content = User.Email;
+            Auth.ImageUser.ImageSource = new BitmapImage(new Uri(User.GetPhoto));
+            Auth.NameUser.Content = User.Surname + " " + User.Name;
+            Auth.EmailUser.Content = User.Email;
+            RoomCheck();
 
             Manager.MainFrame.Navigate(new HomePage());
+        }
+
+        private void RoomCheck()
+        {
+            if (Auth.User is null)
+                return;
+
+            var resultReserve = HotelContext.GetContext().RegisterRooms.FirstOrDefault(x => x.Id_user == Auth.User.Id);
+
+            if (resultReserve is null)
+                return;
+            
+            RoomUser.Reserve = resultReserve;
+            RoomUser.Room = HotelContext.GetContext().Rooms.FirstOrDefault(x => x.Id == resultReserve.Id_room);
+        
         }
     }
 }

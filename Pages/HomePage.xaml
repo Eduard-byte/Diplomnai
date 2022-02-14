@@ -28,7 +28,7 @@
                         <Border.Background>
                             <ImageBrush ImageSource="Background.png" Stretch="UniformToFill"/>
                         </Border.Background>
-                        <Label Content="Тут какая-то инфа" Style="{DynamicResource Text-H1}"/>
+                        <Image Source="LogoMaximum.png"/>
                     </Border>
                 </StackPanel>
             </Grid>
@@ -79,10 +79,77 @@
                     </WrapPanel>
 
                     <WrapPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">
-                        <Label x:Name="SetteingUser" Content="Изменить" Style="{DynamicResource LinkText}" MouseDoubleClick="SettingUser"/>
+                        <Label x:Name="SetteingUser" Content="Изменить" Style="{DynamicResource LinkText}"
+                               MouseDoubleClick="SettingUser"/>
                         <Image Source="Setting.png" Width="13" Cursor="Hand"/>
                     </WrapPanel>
 
+                </Grid>
+            </Border>
+
+
+            <!--Reserve Room-->
+            <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"
+                    CornerRadius="15" Margin="0 40 40 40"
+                    BorderThickness="1" BorderBrush="{DynamicResource H6TextColor}" 
+                    Width="380" Height="420" Background="{DynamicResource PrimaryBackgroundColor}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="0 15 0 0">
+                        <StackPanel ZIndex="2">
+                            <Border CornerRadius="25" Height="180" Width="320">
+                                <Border.Background>
+                                    <ImageBrush x:Name="RoomImage" ImageSource="TestRoom.png" Stretch="UniformToFill"/>
+                                </Border.Background>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel ZIndex="1" Margin="0 8 0 0">
+                            <Border CornerRadius="25" Height="180" Width="290"
+                                    Background="#919198"/>
+                        </StackPanel>
+                        <StackPanel ZIndex="0" Margin="0 18 0 0">
+                            <Border CornerRadius="25" Height="180" Width="260"
+                                    Background="#EBEBEC"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Label Grid.Row="1" Grid.ColumnSpan="2"
+                           HorizontalAlignment="Center" x:Name="RoomName"
+                           Content="Двухместный номер"
+                           Style="{DynamicResource BlackText-20}"/>
+                    <WrapPanel Grid.Row="2" Margin="15 0 0 0">
+                        <Label Content="Дата начала:" Style="{DynamicResource Text-H6}" Margin=" 0 3 0 0"/>
+                        <Label x:Name="DateStart" Content="23 февраля 2022 года" Cursor="Arrow" Style="{DynamicResource LinkText}" />
+                    </WrapPanel>
+
+                    <WrapPanel Grid.Row="3" Margin="15 0 0 0">
+                        <Label Content="Дата окончания:" Style="{DynamicResource Text-H6}" Margin=" 0 3 0 0"/>
+                        <Label x:Name="DateEnd" Content="26 февраля 2022 года"  Cursor="Arrow" Style="{DynamicResource LinkText}"/>
+                    </WrapPanel>
+
+                    <WrapPanel  Grid.Row="4" Margin="15 0 0 0">
+                        <Label Content="Сумма проживания:" Style="{DynamicResource Text-H6}" Margin=" 0 3 0 0"/>
+                        <Label x:Name="Price" Content="54 000 р"  Cursor="Arrow" Style="{DynamicResource LinkText}" />
+                    </WrapPanel>
+
+                    <WrapPanel  Grid.Row="5" Margin="15 0 0 0">
+                        <Label Content="Дней до заселения —" Style="{DynamicResource BlackText-20}"/>
+                        <Label x:Name="StatusAdmin" Content="На рассмотрении"  Style="{DynamicResource Text-H6}"
+                               FontSize="16"/>
+                    </WrapPanel>
                 </Grid>
             </Border>
 

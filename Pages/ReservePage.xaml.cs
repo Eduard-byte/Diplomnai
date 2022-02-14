@@ -47,7 +47,7 @@ namespace UIKitTutorials.Pages
             DateTime start = default;
             DateTime end = default;
 
-            if (Authorization.User.Email is null)
+            if (Auth.User is null)
             {
                 MessageBox.Show("Вы не авторизованы.");
                 return;
@@ -85,18 +85,23 @@ namespace UIKitTutorials.Pages
 
             try
             {
-                HotelContext.GetContext().RegisterRooms.Add(new RegisterRoom
+                var reserve = new RegisterRoom
                 {
                     Id_room = room.Id,
-                    Id_user = Authorization.User.Id,
+                    Id_user = Auth.User.Id,
                     StartDate = DateTime.Parse(StartDate.Text),
                     EndDate = DateTime.Parse(EndDate.Text),
                     Status = false
-                });
+                };
 
+                HotelContext.GetContext().RegisterRooms.Add(reserve);
                 room.Status = true;
+
                 HotelContext.GetContext().Entry(room).State = EntityState.Modified;
                 HotelContext.GetContext().SaveChanges();
+
+                RoomUser.Room = room;
+                RoomUser.Reserve = reserve;
 
                 MessageBox.Show("Номер забронирован.");
                 Manager.MainFrame.Navigate(new HomePage());

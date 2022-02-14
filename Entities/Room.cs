@@ -117,12 +117,14 @@ namespace UIKitTutorials.Entities
             var room = new RegisterRoom();
             
             // находим актуальный заказ с диапазоном в 30 дней 
+
+            // ОШИБКА, статус Свободен на последний день проживания
             foreach (var item in rooms)
             {
                 if (item.EndDate < DateTime.Now)
                     continue;
 
-                if (item.EndDate > DateTime.Now && item.EndDate <= DateTime.Now.AddDays(30))
+                if (item.EndDate >= DateTime.Now && item.EndDate <= DateTime.Now.AddDays(30))
                 {
                     room = item;
                 }
@@ -133,13 +135,10 @@ namespace UIKitTutorials.Entities
                 GetTemporaryStatus = true;
                 return true;
             }
-                
-
 
             // проверка, в данный момент занят номер?
             var StartDate = room.StartDate;
             var EndDate = room.EndDate;
-
             var date = DateTime.Now.Date;
 
             while (StartDate <= EndDate)
@@ -151,23 +150,6 @@ namespace UIKitTutorials.Entities
             }
 
             return false;
-        }
-
-        protected int GetDaysToAccommodation(int roomId)
-        {
-            var room = HotelContext.GetContext().RegisterRooms.FirstOrDefault(r => r.Id_room == roomId);
-
-            if (room is null)
-                return 0;
-            
-
-            var StartDate = room.StartDate;
-            var EndDate = room.EndDate;
-
-            if (room is null)
-                return 0;
-
-            return (EndDate - StartDate).Days;
         }
 
 

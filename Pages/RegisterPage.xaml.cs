@@ -69,6 +69,9 @@ namespace UIKitTutorials.Pages
             {
                 HotelContext.GetContext().Users.Add(User);
                 HotelContext.GetContext().SaveChanges();
+
+                Auth.User = User;
+
                 MessageBox.Show("Информация сохранена.");
             }
             catch (Exception ex)
@@ -76,9 +79,9 @@ namespace UIKitTutorials.Pages
                 MessageBox.Show(ex.Message);
             }
 
-            Manager.ImageUser.ImageSource = new BitmapImage(new Uri(User.GetPhoto));
-            Manager.NameUser.Content = User.Surname + " " + User.Name;
-            Manager.EmailUser.Content = User.Email;
+            Auth.ImageUser.ImageSource = new BitmapImage(new Uri(User.GetPhoto));
+            Auth.NameUser.Content = User.Surname + " " + User.Name;
+            Auth.EmailUser.Content = User.Email;
 
             Manager.MainFrame.Navigate(new HomePage());
         }
