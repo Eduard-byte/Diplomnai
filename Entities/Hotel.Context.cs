@@ -12,21 +12,25 @@ namespace UIKitTutorials.Entities
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class HotelContext : DbContext
     {
         private static HotelContext _context;
 
         public static HotelContext GetContext()
         {
-            if (_context == null)
-                _context = new HotelContext();
+            if (_context is null)
+            {
+                return _context = new HotelContext();
+            }
 
             return _context;
         }
 
-
-        public HotelContext() : base("name=HotelContext") { }
+        public HotelContext()
+            : base("name=HotelContext")
+        {
+        }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

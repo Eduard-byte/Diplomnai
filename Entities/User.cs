@@ -45,7 +45,5 @@ namespace UIKitTutorials.Entities
                 return Directory.GetCurrentDirectory() + @"\Images\User\" + Image.Trim();
             }
         }
-
-
     }
 }

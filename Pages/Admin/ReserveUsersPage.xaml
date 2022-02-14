@@ -1,0 +1,73 @@
+﻿<Page x:Class="UIKitTutorials.Pages.Admin.ReserveUsersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UIKitTutorials.Pages.Admin"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ReserveUsersPage">
+
+    <Grid>
+        <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <!--Sort-->
+                <Label Content="Проживающие гости" Style="{DynamicResource BlackText-title}"
+                       FontWeight="Medium"
+                       FontSize="28" Margin="40 50 0 30"/>
+
+                <TextBox Grid.Column="1" Tag="Поиск..." Style="{DynamicResource TextBoxStyle}"
+                         VerticalAlignment="Center" HorizontalAlignment="Right" Margin=" 0 20 45 0"/>
+                <Line Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="1" X1="815" Y2="0"
+                      StrokeThickness="1" Stroke="{DynamicResource SecundaryLineGrayColor}"/>
+
+                <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Ellipse Width="100" Height="100" Grid.RowSpan="3">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="ImageUser" ImageSource="UserNull.png"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+                    <WrapPanel Grid.Column="1">
+                        <TextBlock Text="Кудрявцев" Style="{DynamicResource TextBlock-18-black}"/>
+                        <TextBlock Text="Эдуард" Style="{DynamicResource TextBlock-18-black}" Margin="10 0"/>
+                        <TextBlock Text="Витальевич" Style="{DynamicResource TextBlock-18-black}"/>
+                    </WrapPanel>
+
+                    <StackPanel Grid.Column="1" Grid.Row="1" MaxWidth="350">
+                        <Label Content="Пожелание гостя" Style="{DynamicResource Text-H6}"/>
+                        <TextBlock Text="Я бы очень хотел номер с розеткой возле кровати и wi-fi" TextWrapping="Wrap"
+                                   Style="{DynamicResource TextBlock-14-black}" Margin="5 0 0 0"/>
+                    </StackPanel>
+
+
+                </Grid>
+
+
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

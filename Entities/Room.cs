@@ -8,13 +8,12 @@
 //------------------------------------------------------------------------------
 
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
+using System.IO;
 
 namespace UIKitTutorials.Entities
 {
     using System;
     using System.Collections.Generic;
-    using System.IO;
     
     public partial class Room
     {
@@ -32,10 +31,9 @@ namespace UIKitTutorials.Entities
         public string Image { get; set; }
         public string Location { get; set; }
         public Nullable<double> Rating { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegisterRoom> RegisterRooms { get; set; }
-        
 
         // Временный статус - активный, если есть заказ через месяц.
         private bool GetTemporaryStatus { get; set; }
@@ -115,7 +113,7 @@ namespace UIKitTutorials.Entities
                 return true;
 
             var room = new RegisterRoom();
-            
+
             // находим актуальный заказ с диапазоном в 30 дней 
 
             // ОШИБКА, статус Свободен на последний день проживания
@@ -145,13 +143,11 @@ namespace UIKitTutorials.Entities
             {
                 if (StartDate == date)
                     return false;
-                
+
                 StartDate = StartDate.AddDays(1);
             }
 
             return false;
         }
-
-
     }
 }

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using UIKitTutorials.Entities;
 using UIKitTutorials.Helpers;
 using UIKitTutorials.Pages;
+using UIKitTutorials.Pages.Admin;
 
 namespace UIKitTutorials
 {
@@ -70,7 +71,7 @@ namespace UIKitTutorials
 
         private void rdPayment_Click(object sender, RoutedEventArgs e)
         {
-            PagesNavigation.Navigate(new ReservePage(new Room()));
+            PagesNavigation.Navigate(new ReserveUsersPage());
         }
 
         private void RdAuth_OnClick(object sender, RoutedEventArgs e)
