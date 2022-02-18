@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UIKitTutorials.Entities;
 
 namespace UIKitTutorials.Pages.Admin
 {
@@ -23,6 +24,8 @@ namespace UIKitTutorials.Pages.Admin
         public ReserveUsersPage()
         {
             InitializeComponent();
+
+            UserReserveList.ItemsSource = HotelContext.GetContext().RegisterRooms.ToList();
         }
     }
 }

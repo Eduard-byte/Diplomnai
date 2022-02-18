@@ -178,6 +178,104 @@
     </Style>
     <!-- End: PrimaryButtonStyle -->
 
+    <!-- Start: PrimaryButtonStyle -->
+    <Style x:Key="SelectedButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="#64E969"/>
+        <Setter Property="Foreground" Value="{DynamicResource SecundaryGrayColor}"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Padding" Value="12 6"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <!--<Setter Property="MaxHeight" Value="43"/>-->
+        <!--<Setter Property="MinHeight" Value="40"/>-->
+        <Setter Property="Width" Value="180"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="btnBorder" CornerRadius="10"
+                                Background="{TemplateBinding Background}"
+                                Width="{TemplateBinding Width}"
+                                
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="True"
+                                Padding="{TemplateBinding Padding}">
+                        <ContentPresenter x:Name="ContentPresenter" Focusable="False"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          RecognizesAccessKey="True"/>
+                        <Border.Effect>
+                            <DropShadowEffect Direction="-80" BlurRadius="15"
+                                                  Opacity="0.3" Color="#64E969"/>
+                        </Border.Effect>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#61D865"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#61D865"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End: PrimaryButtonStyle -->
+
+    <!-- Start: Delete -->
+    <Style x:Key="DeleteButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource DeleteTextColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource SecundaryGrayColor}"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Padding" Value="12 6"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <!--<Setter Property="MaxHeight" Value="43"/>-->
+        <!--<Setter Property="MinHeight" Value="40"/>-->
+        <Setter Property="Width" Value="180"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="btnBorder" CornerRadius="10"
+                                Background="{TemplateBinding Background}"
+                                Width="{TemplateBinding Width}"
+                                
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="True"
+                                Padding="{TemplateBinding Padding}">
+                        <ContentPresenter x:Name="ContentPresenter" Focusable="False"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          RecognizesAccessKey="True"/>
+                        <Border.Effect>
+                            <DropShadowEffect Direction="-80" BlurRadius="15"
+                                                  Opacity="0.3" Color="#E84949"/>
+                        </Border.Effect>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#E84949"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#E84949"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End: Delete -->
+
     <!--Style PasswordBox-->
     <Style x:Key="PasswordBoxStyle" TargetType="{x:Type PasswordBox}">
         <Setter Property="Background" Value="#fff"/>

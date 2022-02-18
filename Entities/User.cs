@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 using System.IO;
+using System.Security.Cryptography;
 
 namespace UIKitTutorials.Entities
 {
@@ -43,6 +44,19 @@ namespace UIKitTutorials.Entities
                     return Directory.GetCurrentDirectory() + @"\Images\User\UserNull.png";
 
                 return Directory.GetCurrentDirectory() + @"\Images\User\" + Image.Trim();
+            }
+        }
+
+        public string GetDesc
+        {
+            get
+            {
+                if (Description is null)
+                {
+                    return "—";
+                }
+
+                return Description;
             }
         }
     }

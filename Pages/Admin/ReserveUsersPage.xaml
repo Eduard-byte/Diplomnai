@@ -12,8 +12,7 @@
         <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -29,42 +28,90 @@
 
                 <TextBox Grid.Column="1" Tag="Поиск..." Style="{DynamicResource TextBoxStyle}"
                          VerticalAlignment="Center" HorizontalAlignment="Right" Margin=" 0 20 45 0"/>
-                <Line Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="1" X1="815" Y2="0"
+                <Line Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="1" X1="815" Y2="0" 
                       StrokeThickness="1" Stroke="{DynamicResource SecundaryLineGrayColor}"/>
 
-                <Grid Grid.Row="2" Grid.ColumnSpan="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                <!--Data-->
+                <ListView Grid.ColumnSpan="2" Grid.Row="1"
+                          Name="UserReserveList" Margin="0 30 0 0"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          HorizontalContentAlignment="Left"
+                          Style="{DynamicResource Collection}">
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel HorizontalAlignment="Center" Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
 
-                    <Ellipse Width="100" Height="100" Grid.RowSpan="3">
-                        <Ellipse.Fill>
-                            <ImageBrush x:Name="ImageUser" ImageSource="UserNull.png"/>
-                        </Ellipse.Fill>
-                    </Ellipse>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
 
-                    <WrapPanel Grid.Column="1">
-                        <TextBlock Text="Кудрявцев" Style="{DynamicResource TextBlock-18-black}"/>
-                        <TextBlock Text="Эдуард" Style="{DynamicResource TextBlock-18-black}" Margin="10 0"/>
-                        <TextBlock Text="Витальевич" Style="{DynamicResource TextBlock-18-black}"/>
-                    </WrapPanel>
+                            <Grid MinWidth="800" Margin="0 30 ">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Column="1" Grid.Row="1" MaxWidth="350">
-                        <Label Content="Пожелание гостя" Style="{DynamicResource Text-H6}"/>
-                        <TextBlock Text="Я бы очень хотел номер с розеткой возле кровати и wi-fi" TextWrapping="Wrap"
-                                   Style="{DynamicResource TextBlock-14-black}" Margin="5 0 0 0"/>
-                    </StackPanel>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Ellipse Width="100" Height="100" Grid.RowSpan="4" Margin="40 0">
+                                    <Ellipse.Fill>
+                                        <ImageBrush x:Name="ImageUser" ImageSource="{Binding User.GetPhoto}"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+
+                                <WrapPanel Grid.Column="1" Margin="5 0 0 0">
+                                    <TextBlock Text="{Binding User.Surname}" Style="{DynamicResource TextBlock-18-black}"/>
+                                    <TextBlock Text="{Binding User.Name}" Style="{DynamicResource TextBlock-18-black}" Margin="10 0"/>
+                                    <TextBlock Text="{Binding User.Patronymic}" Style="{DynamicResource TextBlock-18-black}"/>
+                                </WrapPanel>
+
+                                <WrapPanel Grid.Column="1" Grid.Row="1">
+                                    <Label Content="Email:" Style="{DynamicResource Text-H6}"/>
+                                    <TextBlock Text="{Binding User.Email}" Style="{DynamicResource TextBlock-14-black}" Margin="0 2 0 0"
+                                               Foreground="{DynamicResource PrimaryBlueColor}"/>
+                                </WrapPanel>
+
+                                <StackPanel Grid.Column="1" Grid.Row="2" MaxWidth="350">
+                                    <Label Content="Пожелание гостя" Style="{DynamicResource Text-H6}"/>
+                                    <TextBlock Text="{Binding User.GetDesc}" TextWrapping="Wrap" 
+                                               Style="{DynamicResource TextBlock-14-black}" Margin="5 0 0 0"/>
+                                </StackPanel>
+
+                                <WrapPanel Grid.Column="1" Grid.Row="3" Margin="0 10 0 0">
+                                    <Label Content="Проживание:" Style="{DynamicResource Text-H6}"/>
+                                    <WrapPanel Margin="5 0 0 0">
+                                        <TextBlock Text="{Binding StartDate, StringFormat='{}{0:C dd.MM.yyyy} до '}" Style="{DynamicResource TextBlock-14-black}" Margin="0 2 0 0"/>
+                                        <TextBlock Text="{Binding EndDate, StringFormat='{}{0:dd.MM.yyyy}'}" Style="{DynamicResource TextBlock-14-black}" Margin="0 2 0 0"/>
+                                    </WrapPanel>
+                                </WrapPanel>
+
+                                
 
 
-                </Grid>
+                                <Button Grid.Column="2"  Style="{DynamicResource PrimaryButtonStyle}"
+                                        Content="Изменить" FontSize="14" Height="40" HorizontalAlignment="Right"/>
+
+                                <Button Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Style="{DynamicResource SelectedButtonStyle}"
+                                        Content="Отправить письмо" FontSize="14" Height="40" HorizontalAlignment="Right"/>
+
+                                <Button  Grid.Column="2" Grid.Row="3" Style="{DynamicResource DeleteButtonStyle}"
+                                         Content="Удалить" FontSize="14" Height="40" HorizontalAlignment="Right"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+
+                
 
 
             </Grid>
