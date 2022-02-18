@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using UIKitTutorials.Entities;
+using UIKitTutorials.Helpers;
 
 namespace UIKitTutorials.Pages.Admin
 {
@@ -26,6 +27,52 @@ namespace UIKitTutorials.Pages.Admin
             InitializeComponent();
 
             UserReserveList.ItemsSource = HotelContext.GetContext().RegisterRooms.ToList();
+        }
+
+        private void Delete(object sender, RoutedEventArgs e)
+        {
+            var result = (sender as Button).DataContext as RegisterRoom;
+
+            if (MessageBox.Show($"Вы точно хотите удалить запись?",
+                "Внимание", MessageBoxButton.YesNo,
+                MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    HotelContext.GetContext().RegisterRooms.Remove(result);
+                    HotelContext.GetContext().SaveChanges();
+                    Manager.MainFrame.Navigate(new ReserveUsersPage());
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show("Что-то пошло не так");
+                }
+            }
+        }
+
+        private void SendEmail(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+
+        private void Search(object sender, RoutedEventArgs e)
+        {
+            Update();
+        }
+
+        private void Update()
+        {
+            var list = HotelContext.GetContext().RegisterRooms.ToList();
+
+            list = list.Where(user => user.User.Surname.ToLower().Contains(SearchText.Text.ToLower())).ToList();
+
+            UserReserveList.ItemsSource = list;
+        }
+
+        private void Edit(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

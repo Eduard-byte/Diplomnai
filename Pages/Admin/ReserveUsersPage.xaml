@@ -23,11 +23,10 @@
 
                 <!--Sort-->
                 <Label Content="Проживающие гости" Style="{DynamicResource BlackText-title}"
-                       FontWeight="Medium"
-                       FontSize="28" Margin="40 50 0 30"/>
+                       FontWeight="Medium" FontSize="28" Margin="40 50 0 30"/>
 
-                <TextBox Grid.Column="1" Tag="Поиск..." Style="{DynamicResource TextBoxStyle}"
-                         VerticalAlignment="Center" HorizontalAlignment="Right" Margin=" 0 20 45 0"/>
+                <TextBox Name="SearchText" Grid.Column="1" Tag="Поиск..." Style="{DynamicResource TextBoxStyle}"
+                         VerticalAlignment="Center" HorizontalAlignment="Right" Margin=" 0 20 45 0" SelectionChanged="Search"/>
                 <Line Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="1" X1="815" Y2="0" 
                       StrokeThickness="1" Stroke="{DynamicResource SecundaryLineGrayColor}"/>
 
@@ -97,23 +96,17 @@
 
 
                                 <Button Grid.Column="2"  Style="{DynamicResource PrimaryButtonStyle}"
-                                        Content="Изменить" FontSize="14" Height="40" HorizontalAlignment="Right"/>
+                                        Content="Изменить" FontSize="14" Height="40" HorizontalAlignment="Right" Click="Edit"/>
 
                                 <Button Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Style="{DynamicResource SelectedButtonStyle}"
-                                        Content="Отправить письмо" FontSize="14" Height="40" HorizontalAlignment="Right"/>
+                                        Content="Отправить письмо" FontSize="14" Height="40" HorizontalAlignment="Right" Click="SendEmail"/>
 
                                 <Button  Grid.Column="2" Grid.Row="3" Style="{DynamicResource DeleteButtonStyle}"
-                                         Content="Удалить" FontSize="14" Height="40" HorizontalAlignment="Right"/>
+                                         Content="Удалить" FontSize="14" Height="40" HorizontalAlignment="Right" Click="Delete"/>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
-
-
-                
-
-
             </Grid>
         </Border>
     </Grid>
