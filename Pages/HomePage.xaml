@@ -147,7 +147,7 @@
 
                     <WrapPanel  Grid.Row="5" Margin="15 0 0 0">
                         <Label Content="Дней до заселения —" Style="{DynamicResource BlackText-20}"/>
-                        <Label x:Name="StatusAdmin" Content="На рассмотрении"  Style="{DynamicResource Text-H6}"
+                        <Label x:Name="DaysToAccommodation" Content="На рассмотрении"  Style="{DynamicResource Text-H6}"
                                FontSize="16"/>
                     </WrapPanel>
                 </Grid>

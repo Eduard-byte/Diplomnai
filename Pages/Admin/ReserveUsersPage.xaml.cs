@@ -43,16 +43,23 @@ namespace UIKitTutorials.Pages.Admin
                     HotelContext.GetContext().SaveChanges();
                     Manager.MainFrame.Navigate(new ReserveUsersPage());
                 }
-                catch (Exception exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Что-то пошло не так");
+                    MessageBox.Show($"Что-то пошло не так. Подробнее: {ex}");
                 }
             }
         }
 
+        private void Edit(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new EditRequest((sender as Button).DataContext as RegisterRoom));
+        }
+
         private void SendEmail(object sender, RoutedEventArgs e)
         {
-            
+            var result = (sender as Button).DataContext as RegisterRoom;
+
+            Manager.MainFrame.Navigate(new SendMessage(result));
         }
 
 
@@ -70,9 +77,6 @@ namespace UIKitTutorials.Pages.Admin
             UserReserveList.ItemsSource = list;
         }
 
-        private void Edit(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        
     }
 }

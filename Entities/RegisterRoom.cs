@@ -31,5 +31,21 @@ namespace UIKitTutorials.Entities
         public virtual ICollection<Accommodation> Accommodations { get; set; }
         public virtual Room Room { get; set; }
         public virtual User User { get; set; }
+
+        public int GetDays
+        {
+            get
+            {
+                return (EndDate.Date - StartDate.Date).Days;
+            }
+        }
+
+        public decimal GetPrice
+        {
+            get
+            {
+                return GetDays * Room.Price;
+            }
+        }
     }
 }

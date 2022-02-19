@@ -12,9 +12,7 @@
         <Border CornerRadius="8" Background="{DynamicResource SecundaryBackgroundColor}">
             <StackPanel HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                <Image Source="LogoMini.png"
-                       Width="60" Height="60"
-                       Stretch="Fill"/>
+                <Image Source="LogoMini.png" Width="60" Height="60" Stretch="Fill"/>
                 <Label Content="Войти в Ibis Hotel" Margin="0,30,0,20"
                        HorizontalAlignment="Center"
                        Style="{StaticResource BlackText-title}"/>

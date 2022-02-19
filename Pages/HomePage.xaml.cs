@@ -57,7 +57,7 @@ namespace UIKitTutorials.Pages
                 DateStart.Content = "—";
                 DateEnd.Content = "—";
                 Price.Content = "—";
-                StatusAdmin.Content = "—";
+                DaysToAccommodation.Content = "—";
             }
             else
             {
@@ -67,7 +67,7 @@ namespace UIKitTutorials.Pages
                 DateStart.Content = request.StartDate.ToString("dd MMMM yyyy года");
                 DateEnd.Content = request.EndDate.ToString("dd MMMM yyyy года");
                 Price.Content = RoomUser.GetPrice + " ₽";
-                StatusAdmin.Content = RoomUser.GetDaysToAccommodation;
+                DaysToAccommodation.Content = RoomUser.GetDaysToAccommodation;
             }
         }
 

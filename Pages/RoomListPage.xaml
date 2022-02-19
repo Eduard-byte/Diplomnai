@@ -124,7 +124,7 @@
                                     </WrapPanel>
 
                                     <WrapPanel Grid.Column="1" Grid.Row="2">
-                                        <Button Content="Забранировать"
+                                        <Button Content="Забронировать"
                                                 Style="{DynamicResource PrimaryButtonStyle}"
                                                 FontSize="14" x:Name="Reserve" Click="ReserveButton"/>
 

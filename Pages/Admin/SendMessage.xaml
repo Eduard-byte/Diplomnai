@@ -1,0 +1,103 @@
+﻿<Page x:Class="UIKitTutorials.Pages.Admin.SendMessage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UIKitTutorials.Pages.Admin"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SendMessage">
+
+    <Grid>
+        <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
+            <Grid>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Ellipse Width="100" Height="100" Grid.RowSpan="4" Margin="40 0">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{Binding User.GetPhoto}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+                    <WrapPanel Margin="0 20 0 10" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding User.Surname}" Style="{StaticResource TextBlock-18-black}" FontSize="22" FontWeight="Normal"/>
+                        <TextBlock Text="{Binding User.Name}" Margin="10 0" Style="{StaticResource TextBlock-18-black}" FontSize="22" FontWeight="Normal"/>
+                        <TextBlock Text="{Binding User.Patronymic}" Style="{StaticResource TextBlock-18-black}" FontSize="22" FontWeight="Normal"/>
+                    </WrapPanel>
+                    
+
+                    <Border  Style="{StaticResource Block}">
+
+                        <Grid Margin="24 30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+
+                            <!--Room-->
+                            <StackPanel Grid.RowSpan="2">
+                                <Image Source="{Binding Room.GetPhoto}" Height="200" Width="200" Margin="5"
+                                       Stretch="UniformToFill">
+                                    <Image.Clip>
+                                        <RectangleGeometry RadiusX="15" RadiusY="15" Rect="0,0,200,200"/>
+                                    </Image.Clip>
+                                </Image>
+
+                                <Label HorizontalAlignment="Center" x:Name="RoomName" Content="{Binding Room.Name}"
+                                       Style="{DynamicResource BlackText-20}"/>
+                                <WrapPanel Margin="15 0 0 0">
+                                    <Label Content="Дата начала:" Style="{DynamicResource Text-H6}" Margin=" 0 3 0 0"/>
+                                    <Label x:Name="DateStart" Content="-" Cursor="Arrow" Style="{DynamicResource LinkText}" />
+                                </WrapPanel>
+
+                                <WrapPanel Margin="15 0 0 0">
+                                    <Label Content="Дата окончания:" Style="{DynamicResource Text-H6}" Margin=" 0 3 0 0"/>
+                                    <Label x:Name="DateEnd" Content="-"  Cursor="Arrow" Style="{DynamicResource LinkText}"/>
+                                </WrapPanel>
+
+                                <WrapPanel Margin="15 0 0 0">
+                                    <Label Content="Количество дней:" Style="{DynamicResource Text-H6}" Margin=" 0 3 0 0"/>
+                                    <Label x:Name="Days" Content="{Binding GetDays}" Style="{DynamicResource LinkText}" Cursor="Arrow"/>
+                                </WrapPanel>
+                            </StackPanel>
+                            
+                            <!--User-->
+                            <StackPanel Grid.Column="1" >
+                                <WrapPanel>
+                                    <Label Content="Email:" Style="{DynamicResource Text-H6}" Margin=" 0 3 0 0"/>
+                                    <Label Content="{Binding User.Email}" Style="{DynamicResource LinkText}" Cursor="Arrow"/>
+                                </WrapPanel>
+
+                                <WrapPanel>
+                                    <Label Content="Дата рождения:" Style="{DynamicResource Text-H6}" Margin=" 0 3 0 0"/>
+                                    <Label Content="{Binding User.DateOfBirth}" Style="{DynamicResource LinkText}" Cursor="Arrow"/>
+                                </WrapPanel>
+
+                                <WrapPanel>
+                                    <Label Content="Заметки пользователя:" Style="{DynamicResource Text-H6}" Margin=" 0 3 0 0"/>
+                                    <Label Content="{Binding User.Description}" MaxWidth="300" Style="{DynamicResource LinkText}" Cursor="Arrow"/>
+                                </WrapPanel>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Grid.Row="1">
+                                <StackPanel Margin="0 0 0 20">
+                                    <Label Content="Итоговая цена" Style="{DynamicResource Text-H6}"/>
+                                    <TextBox x:Name="Price" Style="{DynamicResource TextBoxStyle}" Margin="4 0 0 0" HorizontalAlignment="Left" Tag="Введите цену"/>
+                                </StackPanel>
+                                <TextBox x:Name="Desc" Style="{DynamicResource TextBoxStyleDesc}" Tag="Сообщение пользователю" Margin="4 0 0 0" Width="300"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Border>
+                    <Button Content="Отправить письмо" Margin="0 20" Width="500"
+                            Style="{DynamicResource PrimaryButtonStyle}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

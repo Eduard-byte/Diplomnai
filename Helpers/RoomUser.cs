@@ -41,7 +41,7 @@ namespace UIKitTutorials.Helpers
                     return "вы уже заселены";
                 }
 
-                return (Reserve.StartDate - DateTime.Now).Days;
+                return (Reserve.StartDate.Date - DateTime.Now.Date).Days;
             }
         }
 
