@@ -51,13 +51,15 @@
                                 <Label HorizontalAlignment="Center" x:Name="RoomName" Content="{Binding Room.Name}"
                                        Style="{DynamicResource BlackText-20}"/>
                                 <WrapPanel Margin="15 0 0 0">
-                                    <Label Content="Дата начала:" Style="{DynamicResource Text-H6}" Margin=" 0 3 0 0"/>
-                                    <Label x:Name="DateStart" Content="-" Cursor="Arrow" Style="{DynamicResource LinkText}" />
+                                    <Label Content="Дата начала:" Style="{DynamicResource Text-H6}"/>
+                                    <TextBlock x:Name="DateStart" Text="{Binding StartDate, StringFormat='{}{0:dd.MM.yyyy}'}" Margin="0 3 0 0"
+                                           Foreground="{DynamicResource PrimaryBlueColor}" Style="{DynamicResource TextBlock-14-black}"/>
                                 </WrapPanel>
 
                                 <WrapPanel Margin="15 0 0 0">
-                                    <Label Content="Дата окончания:" Style="{DynamicResource Text-H6}" Margin=" 0 3 0 0"/>
-                                    <Label x:Name="DateEnd" Content="-"  Cursor="Arrow" Style="{DynamicResource LinkText}"/>
+                                    <Label Content="Дата окончания:" Style="{DynamicResource Text-H6}"/>
+                                    <TextBlock x:Name="DateEnd" Text="{Binding EndDate, StringFormat='{}{0:dd.MM.yyyy}'}" Margin="0 3 0 0"
+                                               Foreground="{DynamicResource PrimaryBlueColor}" Style="{DynamicResource TextBlock-14-black}"/>
                                 </WrapPanel>
 
                                 <WrapPanel Margin="15 0 0 0">
@@ -67,7 +69,7 @@
                             </StackPanel>
                             
                             <!--User-->
-                            <StackPanel Grid.Column="1" >
+                            <StackPanel Grid.Column="1" Margin="24 0 0 0" >
                                 <WrapPanel>
                                     <Label Content="Email:" Style="{DynamicResource Text-H6}" Margin=" 0 3 0 0"/>
                                     <Label Content="{Binding User.Email}" Style="{DynamicResource LinkText}" Cursor="Arrow"/>
@@ -84,7 +86,8 @@
                                 </WrapPanel>
                             </StackPanel>
 
-                            <StackPanel Grid.Column="1" Grid.Row="1">
+                            <!--Data-->
+                            <StackPanel Grid.Column="1" Grid.Row="1" Margin="24 0 0 0">
                                 <StackPanel Margin="0 0 0 20">
                                     <Label Content="Итоговая цена" Style="{DynamicResource Text-H6}"/>
                                     <TextBox x:Name="Price" Style="{DynamicResource TextBoxStyle}" Margin="4 0 0 0" HorizontalAlignment="Left" Tag="Введите цену"/>
@@ -94,8 +97,8 @@
 
                         </Grid>
                     </Border>
-                    <Button Content="Отправить письмо" Margin="0 20" Width="500"
-                            Style="{DynamicResource PrimaryButtonStyle}"/>
+                    <Button Content="Отправить письмо" Margin="0 20 0 10" Width="500"
+                            Style="{DynamicResource PrimaryButtonStyle}" Click="SendEmail"/>
                 </StackPanel>
             </Grid>
         </Border>

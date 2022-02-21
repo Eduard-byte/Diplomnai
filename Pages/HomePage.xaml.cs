@@ -63,7 +63,7 @@ namespace UIKitTutorials.Pages
             {
                 RoomImage.ImageSource =
                     new BitmapImage(new Uri(room.GetPhoto));
-                RoomName.Content = room.Name + " номер";
+                RoomName.Content = room.Name;
                 DateStart.Content = request.StartDate.ToString("dd MMMM yyyy года");
                 DateEnd.Content = request.EndDate.ToString("dd MMMM yyyy года");
                 Price.Content = RoomUser.GetPrice + " ₽";
