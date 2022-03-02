@@ -50,11 +50,6 @@ namespace UIKitTutorials.Pages.Admin
             }
         }
 
-        private void Edit(object sender, RoutedEventArgs e)
-        {
-            Manager.MainFrame.Navigate(new EditRequest((sender as Button).DataContext as RegisterRoom));
-        }
-
         private void SendEmail(object sender, RoutedEventArgs e)
         {
             var result = (sender as Button).DataContext as RegisterRoom;

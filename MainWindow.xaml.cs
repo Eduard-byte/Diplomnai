@@ -19,9 +19,6 @@ using UIKitTutorials.Pages.Admin;
 
 namespace UIKitTutorials
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -30,7 +27,7 @@ namespace UIKitTutorials
 
             Manager.MainFrame = PagesNavigation;
 
-            Manager.MainFrame.Navigate(new HomePage());
+            Manager.MainFrame.Navigate(new Authorization());
 
             Auth.ImageUser = ImageUser;
             Auth.EmailUser = EmailUser;
@@ -39,18 +36,10 @@ namespace UIKitTutorials
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            
-
             Close();
         }
 
-        private void btnRestore_Click(object sender, RoutedEventArgs e)
-        {
-            if (WindowState == WindowState.Normal)
-                WindowState = WindowState.Maximized;
-            else
-                WindowState = WindowState.Normal;
-        }
+       
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
@@ -64,14 +53,22 @@ namespace UIKitTutorials
             PagesNavigation.Navigate(new System.Uri("Pages/HomePage.xaml", UriKind.RelativeOrAbsolute));
         }
 
-        private void rdNotes_Click(object sender, RoutedEventArgs e)
+        private void rdRoom_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new RoomListPage());
         }
 
-        private void rdPayment_Click(object sender, RoutedEventArgs e)
+        private void rdSetting_Click(object sender, RoutedEventArgs e)
         {
-            PagesNavigation.Navigate(new ReserveUsersPage());
+            if (Auth.IsAdmin)
+            {
+                Manager.MainFrame.Navigate(new ReserveUsersPage());
+            }
+            else
+            {
+                Manager.MainFrame.Navigate(new ErrorPage());
+            }
+
         }
 
         private void RdAuth_OnClick(object sender, RoutedEventArgs e)

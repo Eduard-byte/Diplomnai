@@ -73,7 +73,7 @@ namespace UIKitTutorials.Pages
 
         private void SettingUser(object sender, MouseButtonEventArgs e)
         {
-            
+            Manager.MainFrame.Navigate(new UserProfilePage(Auth.User));
         }
     }
 }

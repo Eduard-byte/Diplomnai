@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using UIKitTutorials.Entities;
 using UIKitTutorials.Helpers;
+using UIKitTutorials.Pages.Admin;
 
 namespace UIKitTutorials.Pages
 {
@@ -23,8 +24,6 @@ namespace UIKitTutorials.Pages
     public partial class Authorization : Page
     {
         public static User User { get; set; } = new User();
-
-        public static bool IsAdmin { get; set; } = false;
 
         public Authorization()
         {
@@ -65,7 +64,7 @@ namespace UIKitTutorials.Pages
 
                 if (User.Email == "admin@ibis.com" && User.Password == "0000")
                 {
-                    IsAdmin = true;
+                    Auth.IsAdmin = true;
                 }
 
                 Auth.User = User;
@@ -82,7 +81,14 @@ namespace UIKitTutorials.Pages
             Auth.EmailUser.Content = User.Email;
             RoomCheck();
 
-            Manager.MainFrame.Navigate(new HomePage());
+            if (Auth.IsAdmin)
+            {
+                Manager.MainFrame.Navigate(new ReserveUsersPage());
+            }
+            else
+            {
+                Manager.MainFrame.Navigate(new HomePage());
+            }
         }
 
         private void RoomCheck()

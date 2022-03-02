@@ -22,7 +22,7 @@
 
 
                 <!--Sort-->
-                <Label Content="Проживающие гости" Style="{DynamicResource BlackText-title}"
+                <Label Content="Забронированные номера" Style="{DynamicResource BlackText-title}"
                        FontWeight="Medium" FontSize="28" Margin="40 50 0 30"/>
 
                 <TextBox Name="SearchText" Grid.Column="1" Tag="Поиск..." Style="{DynamicResource TextBoxStyle}"
@@ -62,7 +62,7 @@
 
                                 <Ellipse Width="100" Height="100" Grid.RowSpan="4" Margin="40 0">
                                     <Ellipse.Fill>
-                                        <ImageBrush x:Name="ImageUser" ImageSource="{Binding User.GetPhoto}"/>
+                                        <ImageBrush x:Name="ImageUser" ImageSource="{Binding User.GetPhoto}" Stretch="UniformToFill"/>
                                     </Ellipse.Fill>
                                 </Ellipse>
 
@@ -78,11 +78,10 @@
                                                Foreground="{DynamicResource PrimaryBlueColor}"/>
                                 </WrapPanel>
 
-                                <StackPanel Grid.Column="1" Grid.Row="2" MaxWidth="350">
-                                    <Label Content="Пожелание гостя" Style="{DynamicResource Text-H6}"/>
-                                    <TextBlock Text="{Binding User.GetDesc}" TextWrapping="Wrap" 
-                                               Style="{DynamicResource TextBlock-14-black}" Margin="5 0 0 0"/>
-                                </StackPanel>
+                                <WrapPanel Grid.Column="1" Grid.Row="2" Margin="0 10 0 0">
+                                    <Label Content="Выбранный номер:" Style="{DynamicResource Text-H6}"/>
+                                    <TextBlock Text="{Binding Room.Name}" Style="{DynamicResource TextBlock-14-black}" Margin="0 3 0 0"/>
+                                </WrapPanel>
 
                                 <WrapPanel Grid.Column="1" Grid.Row="3" Margin="0 10 0 0">
                                     <Label Content="Проживание:" Style="{DynamicResource Text-H6}"/>
@@ -92,13 +91,7 @@
                                     </WrapPanel>
                                 </WrapPanel>
 
-                                
-
-
-                                <Button Grid.Column="2"  Style="{DynamicResource PrimaryButtonStyle}"
-                                        Content="Изменить" FontSize="14" Height="40" HorizontalAlignment="Right" Click="Edit"/>
-
-                                <Button Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Style="{DynamicResource SelectedButtonStyle}"
+                                <Button Grid.Column="2" Grid.RowSpan="2" Style="{DynamicResource PrimaryButtonStyle}"
                                         Content="Отправить письмо" FontSize="14" Height="40" HorizontalAlignment="Right" Click="SendEmail"/>
 
                                 <Button  Grid.Column="2" Grid.Row="3" Style="{DynamicResource DeleteButtonStyle}"

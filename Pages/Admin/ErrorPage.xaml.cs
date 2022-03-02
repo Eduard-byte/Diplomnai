@@ -12,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using UIKitTutorials.Entities;
 
 namespace UIKitTutorials.Pages.Admin
 {
     /// <summary>
-    /// Логика взаимодействия для EditRequest.xaml
+    /// Логика взаимодействия для ErrorPage.xaml
     /// </summary>
-    public partial class EditRequest : Page
+    public partial class ErrorPage : Page
     {
-        public EditRequest(RegisterRoom registerRoom)
+        public ErrorPage()
         {
             InitializeComponent();
         }

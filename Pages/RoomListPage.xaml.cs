@@ -27,11 +27,67 @@ namespace UIKitTutorials.Pages
             InitializeComponent();
 
             RoomList.ItemsSource = HotelContext.GetContext().Rooms.ToList();
+
+            SortByStatus.SelectedIndex = 0;
+            SortByPrice.SelectedIndex = 0;
         }
 
         private void ReserveButton(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new ReservePage((sender as Button).DataContext as Room));
+        }
+
+        private void SortByPrice_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           Update(); 
+        }
+
+        private void SortByStatus_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Update();
+        }
+
+        private void Update()
+        {
+            var result = HotelContext.GetContext().Rooms.ToList();
+
+            if (SortByPrice.SelectedIndex >= 0)
+            {
+                if(SortByPrice.SelectedIndex == 1)
+                    result = result.OrderBy(p => p.Price).ToList();
+                if (SortByPrice.SelectedIndex == 2)
+                    result = result.OrderByDescending(p => p.Price).ToList();
+            }
+
+            if (SortByStatus.SelectedIndex >= 0)
+            {
+                if (SortByStatus.SelectedIndex == 1)
+                    result = result.Where(s => s.GetActualStatus).ToList();
+                if (SortByStatus.SelectedIndex == 2)
+                    result = result.Where(s => !s.GetActualStatus).ToList();
+            }
+
+            //switch (SortByPrice.SelectedIndex)
+            //{
+            //    case 0: break;
+            //    case 1: 
+            //        break;
+            //    case 2: result = result.OrderByDescending(p => p.Price).ToList();
+            //        break;
+            //}
+
+            //switch (SortByStatus.SelectedIndex)
+            //{
+            //    case 0: break;
+            //    case 1:
+            //        result = result.Where(s => s.GetActualStatus).ToList();
+            //        break;
+            //    case 2:
+            //        result = result.Where(s => !s.GetActualStatus).ToList();
+            //        break;
+            //}
+
+            RoomList.ItemsSource = result;
         }
     }
 }
