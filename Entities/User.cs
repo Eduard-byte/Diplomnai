@@ -36,6 +36,8 @@ namespace UIKitTutorials.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegisterRoom> RegisterRooms { get; set; }
 
+        #region HelpersForUserTabel
+
         public string GetPhoto
         {
             get
@@ -59,5 +61,7 @@ namespace UIKitTutorials.Entities
                 return Description;
             }
         }
+
+        #endregion
     }
 }

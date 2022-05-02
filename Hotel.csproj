@@ -257,6 +257,7 @@
     <EmbeddedResource Include="Assets\Icons\Images\LogoMax.png" />
     <EmbeddedResource Include="Assets\Icons\Images\LogoMini.png" />
     <EmbeddedResource Include="Assets\Icons\Images\LogoNormal.png" />
+    <Resource Include="Entities\Helpels.txt" />
     <Content Include="Entities\Hotel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Hotel.edmx</DependentUpon>

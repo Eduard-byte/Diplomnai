@@ -95,7 +95,7 @@ namespace UIKitTutorials.Pages.Admin
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Что-то ошло не так. Подробнее - {ex}");
+                MessageBox.Show($"Что-то ошло не так. Подробнее - {ex.Message}");
                 return;
             }
         }

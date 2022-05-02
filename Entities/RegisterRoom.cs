@@ -32,6 +32,9 @@ namespace UIKitTutorials.Entities
         public virtual Room Room { get; set; }
         public virtual User User { get; set; }
 
+
+        #region HelpersForRegisterRoomTable
+
         public int GetDays
         {
             get
@@ -47,5 +50,8 @@ namespace UIKitTutorials.Entities
                 return GetDays * Room.Price;
             }
         }
+
+        #endregion
+
     }
 }
