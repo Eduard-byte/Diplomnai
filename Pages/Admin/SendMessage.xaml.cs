@@ -102,14 +102,14 @@ namespace UIKitTutorials.Pages.Admin
 
         private void Execute(string email, string subject, string message)
         {
-            // Клиент который отправляет письмо 
+            
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
-            client.Credentials = new NetworkCredential("sjbhdvghchjskjcj@gmail.com", "Eduard0507");
+            client.Credentials = new NetworkCredential("Email", "Password");
             client.EnableSsl = true;
 
-            // Получатель письма
+            
             MailMessage mail = new MailMessage();
-            mail.From = new MailAddress("sjbhdvghchjskjcj@gmail.com", "Отель Ibis");
+            mail.From = new MailAddress("loginAndDomain", "Отель Ibis");
             mail.To.Add(new MailAddress(email));
             mail.Subject = subject;
             mail.IsBodyHtml = true;
